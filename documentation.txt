@@ -1,0 +1,76 @@
+Mattias Majetic
+
+This program will find the shortest path through two stops in a bus map represented
+by a graph and then draw the map including bus stops, bus lines and the shortest path.
+Execute Lab3.java to start the program, then pick a source and destination from
+the two lists and press the SPath button and the map will be shown. The names of the
+stops of the path as well as the length of the path will also be printed to the console.
+
+It is possible to select new stops and press the button again, it will redraw the map
+accordingly. To use other text files than stops-bvs/lines-bvs just change those strings
+in Lab3.java.
+
+-----------------------------------------------------------------------------------
+
+The program is divided into five modules:
+
+Dijkstras: Contains the ShortestPath class that implements the Path interface.
+	 Uses a graph and a priority queue to calculate the shortest path.
+	 I had to make Path throw Exception because of the priority queue.
+
+Graph: Contains the Graph class that consists of vertices and edges which are
+          represented in their own classes. A vertex is a stop and an edge is a line.
+          The name of the vertices are of type String and the weight of the edges
+          are of type int. The graph is directed and uses adjacency lists in order
+          for ShortestPath to find the adjacent vertices easier.
+
+Help: Just basic help classes like a DefaultComparator, a standard Entry
+        and a Position interface for use in the priority queue. Entries will be
+        of type <Integer, Vertex> in this program.
+
+Lab3Help: The helper module. Nothing changed unless I accidentally did it.
+
+PriorityQueue: Interface PriorityQueue, class ArrayListCompleteBinaryTree
+	       taken from the lecture book implemented by class
+	       AdaptableBinaryHeap. It is the binary heap from the book
+	       extended with a dictionary to be able to implement
+	       replaceKey(E, K), remove(E) etc.
+
+See the code comments for more information. For Lab3.java, I first did a way of
+building the graph without importing the Vertex class,  but it took twice as long
+as it does now so I went with this way.
+
+-----------------------------------------------------------------------------------
+
+To test the program I started by creating a small graph found on the lecture notes.
+I tested the priority queue with simpler ones before making this one. I also tested the
+shortest path algorithm separately. When the program started to shape up I tested
+the gbg and bvs text files in most ways I could think of.
+
+-----------------------------------------------------------------------------------
+
+The Dijkstras algorithm should be of O((m + n) log n) and the priority queue O(log n).
+Finding vertices in the graph takes linear time, but it is as far as I remember only
+used once when inserting the starting vertex into the priority queue.
+
+-----------------------------------------------------------------------------------
+
+Why I wrote the program as I did... I wanted to do a general graph and first tried that
+but it did not work as I wanted it to. Before I saw it had to use adjacency lists I used
+edge lists, which worked pretty much just as good. Of course I also had to do it
+directed since the weight of the edge between two bus stops is not always the same
+in both directions.
+
+For the priority queue I wanted to do a fast one, and binary heap seemed to be faster
+than a linked list. Actually I was (and am) thinking of doing a binomial heap instead but
+according to wikipedia it is as fast as a binary heap but with extra methods decreaseKey()
+etc so I just extended the binary heap with those methods, because it did not seem to
+be any different (time based that is)!
+
+Dijkstra's I just implemented from pseudo code and it just became what it is.
+I have made it so it takes advantage of when the user wants to find the shortest path
+again with the same source but different destination.
+
+I thought the helper classes looked good and would save me a lot of time so I
+decided to use them. Then when I was finished with the graph, priority queue and
+Dijkstra's I just had to adjust the main program to the helper classes.
