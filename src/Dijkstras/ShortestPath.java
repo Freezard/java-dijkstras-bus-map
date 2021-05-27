@@ -14,7 +14,7 @@ import PriorityQueue.PriorityQueue;
  * Gives a string representation of the nodes of the shortest
  * path as well as the length of it.
  * 
- * @author Mattias Majetic
+ * @author Mattias
  */
 public class ShortestPath implements Path{
 	private Graph g;
