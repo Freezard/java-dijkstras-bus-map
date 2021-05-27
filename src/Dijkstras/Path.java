@@ -7,7 +7,7 @@ import java.util.Iterator;
  * get an iterator of the path and get the
  * total length of the path.
  * 
- * @author Mattias Majetic
+ * @author Mattias
  */
 public interface Path{
 	/**
