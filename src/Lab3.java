@@ -19,7 +19,7 @@ import PriorityQueue.AdaptableBinaryHeap;
  * Uses specific text files to get information about the
  * bus map.
  * 
- * @author Mattias Majetic
+ * @author Mattias
  */
 public class Lab3 implements ActionListener{
 	private BusMapFrame bmf;
